@@ -8,8 +8,8 @@ const path = require ('path');
 
 require('dotenv').config();
 
-//const userRoutes = ('./routes/user')
-//const sauceRoutes = ('./routes/sauce')
+ const userRoutes = require('./routes/user')
+const sauceRoutes = require('./routes/sauce')
 
 
 const app = express();
@@ -45,6 +45,6 @@ app.use(limiter);
   app.use(express.json());
   app.use('/images',express.static(path.join(__dirname,'images')));
   //
-//app.use('/api/sauces',sauceRoutes)
-//app.use('./auth', userRoutes)
+app.use('/api/sauces',sauceRoutes)
+app.use('./api/auth', userRoutes)
 module.exports = app;

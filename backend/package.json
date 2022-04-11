@@ -10,7 +10,8 @@
     "mongoose": "^6.2.10",
     "mongoose-unique-validator": "^3.0.0",
     "node": "12.14",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "password-validator": "^5.2.1"
   },
   "name": "backend",
   "version": "1.0.0",
