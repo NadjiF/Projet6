@@ -36,14 +36,13 @@ mongoose.connect(process.env.SECRET_DB,
   .catch((error) => console.log('Connexion à MongoDB échouée !', error));
 
 app.use(rateLimit); 
-app.use(helmet());
-// ------------------ Intégrés à Helmet mais permet de savoir exactement de quoi Helmet protège ------------------------
-app.use(helmet.hidePoweredBy()); 
-app.use(helmet.frameguard({ action: 'deny' })); 
-app.use(helmet.xssFilter()); 
-app.use(helmet.noSniff()); 
-app.use(helmet.ieNoOpen()); 
+app.use(helmet({
+  crossOriginResourcePolicy: false
+}));
 
+
+
+//Gestion des erreurs CORS
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
