@@ -40,24 +40,20 @@ exports.getOneSauce = (req, res, next) => {
 
 
 exports.createSauce = (req, res, next) => {
-  const sauceObject = JSON.parse(req.body.sauce);
+  const sauceObject = JSON.parse(req.body.sauce)
   delete sauceObject._id;
   const sauce = new Sauce({
-    userId: xss(sauceObject.userId),
-    name: xss(sauceObject.name),
-    manufacturer: xss(sauceObject.manufacturer),
-    description: xss(sauceObject.description),
-    mainPepper: xss(sauceObject.mainPepper),
-    heat: sauceObject.heat,
+    ...sauceObject,
     imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
     likes: 0,
     dislikes: 0,
     usersLiked: [' '],
     usersdisLiked: [' '],
   });
-  sauce.save()
-    .then(() => res.status(201).json({ message: 'Sauce enregistrée !'}))
-    .catch(error => res.status(400).json({ error }));
+  sauce
+    .save()
+    .then(() => res.status(201).json({ message: "Sauce enregistrée" }))
+    .catch((error) => res.status(400).json({ error }));
 };
 
 
