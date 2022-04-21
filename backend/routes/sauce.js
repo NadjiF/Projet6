@@ -8,8 +8,7 @@ const sauceInput = require('../middleware/sauce-input');
 const sauceCtrl = require('../controllers/sauce');
 
 
-// Application de notre middleware auth à toute nos routes, multer placé après pour qu'il ne s'applique qu'aux
-// requêtes authentifiées
+// Application du middleware
 router.get("/", auth, sauceCtrl.getAllSauces);
 router.get('/:id', auth, sauceCtrl.getOneSauce);
 router.post("/", auth, multer, sauceInput, sauceCtrl.createSauce);

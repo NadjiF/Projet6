@@ -4,15 +4,13 @@ const express = require('express');
 // application expess
 const app = express();
 
-// Helmet nous aide à protéger notre application de certaines des vulnérabilités bien connues du Web 
+// Helmet protège l'application de certaines vulnérabilités du Web 
 // en configurant de manière appropriée des en-têtes HTTP
 const helmet = require('helmet');
 
-// Module dotenv pour éviter stocker des informations sensibles au sein de notre application
+// Module dotenv pour les informations sensibles de l'application
 require('dotenv').config();
 
-//Mongoose est un package qui facilite les interactions avec notre base de données MongoDB grâce 
-// à des fonctions extrêmement utiles.
 const mongoose = require('mongoose');
 
 // Import qui nous donnes accès au chemin de notre système de fichier
@@ -28,14 +26,15 @@ const userRoutes = require('./routes/user');
 
 
 
-// Connection de notre API à notre cluster MongoDB
+// Connection de l'API au cluster MongoDB
 mongoose.connect(process.env.SECRET_DB,
 { useNewUrlParser: true,
   useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch((error) => console.log('Connexion à MongoDB échouée !', error));
 
-app.use(rateLimit); 
+app.use(rateLimit);
+//affichage des images(url) 
 app.use(helmet({
   crossOriginResourcePolicy: false
 }));
@@ -50,10 +49,9 @@ app.use((req, res, next) => {
   next();
 });
 
-// Middleware global pour notre application
 app.use(express.json());
 
-// Indique à Express qu'il faut gérer la ressource images de manière statique (un sous-répertoire de notre 
+//Express gère la ressource images de manière statique (un sous-répertoire de notre 
 // répertoire de base, __dirname ) à chaque fois qu'elle reçoit une requête vers la route /images 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 

@@ -1,7 +1,7 @@
 
 const mongoose = require('mongoose');
-// Package mongoose-unique-validator pour pré-valider les informations avant de les enregistrer
-// (Adresse e-mail unique et pallier les erreurs de MongoDB)
+
+//pré-valider les informations avant de les enregistrer
 const uniqueValidator = require('mongoose-unique-validator');
 
 // Pour s'assurer que deux utilisateurs ne peuvent pas utiliser la même adresse e-mail, utilisation du

@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
       }
       toTrim(name, manufacturer, description, mainPepper);
   
-      // Vérification du nombre de caractères après avoir trim()
+      // Vérification du nombre de caractères
       const hasThreeCharacters = (currentValue) => currentValue.length >= 3;
       if (trimedTab.every(hasThreeCharacters)) {
         next();
@@ -18,7 +18,7 @@ module.exports = (req, res, next) => {
         throw new Error("Tous les champs doivent faire au moins 3 caractères");
       }
     } else {
-      // Si il s'agit de la route put
+      // if route put
       const sauce = req.body;
       let { name, manufacturer, description, mainPepper } = sauce;
       let trimedTab = [];
@@ -28,7 +28,7 @@ module.exports = (req, res, next) => {
       }
       toTrim(name, manufacturer, description, mainPepper);
   
-      // Vérification du nombre de caractères après avoir trim()
+      // Vérification du nombre de caractères trim
       const hasThreeCharacters = (currentValue) => currentValue.length >= 3;
       if (trimedTab.every(hasThreeCharacters)) {
         next();
