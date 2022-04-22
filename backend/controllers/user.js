@@ -18,7 +18,7 @@ exports.signup = (req, res, next) => {
     // crypte le mot de passe hash, 10 tours
     bcrypt.hash(req.body.password, 10)
         .then(hash => {
-            const user = new User({
+            const user = new User({ 
                 email: emailCryptoJs,
                 password: hash
             });
