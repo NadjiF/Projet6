@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
   
       function toTrim(...string) {
         trimedTab = string.map((elt) => elt.trim());
-      }
+      } 
       toTrim(name, manufacturer, description, mainPepper);
   
       // Vérification du nombre de caractères
