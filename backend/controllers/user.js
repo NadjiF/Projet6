@@ -11,7 +11,6 @@ const User = require('../models/user');
 
 //function signup (création de compte)
 exports.signup = (req, res, next) => {
-
     //chiffrer l'email dans la base de donnée 
     const emailCryptoJs = cryptojs.HmacSHA512(req.body.email, "CLE_SECRETE").toString();
 

@@ -23,9 +23,6 @@ const rateLimit = require('./middleware/limiter');
 const sauceRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user'); 
 
-
-
-
 // Connection de l'API au cluster MongoDB
 mongoose.connect(process.env.SECRET_DB,
 { useNewUrlParser: true,
@@ -38,8 +35,6 @@ app.use(rateLimit);
 app.use(helmet({
   crossOriginResourcePolicy: false
 }));
-
-
 
 //Gestion des erreurs CORS
 app.use((req, res, next) => {
